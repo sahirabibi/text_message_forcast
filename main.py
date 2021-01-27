@@ -1,4 +1,5 @@
-# a program to send a text message to person with 12 hour forcast
+# a program to send a text message to person with 12 hour forecast and weekly forcast at 5am daily
+# and Monday respectively
 import requests
 import os
 from datetime import datetime
@@ -30,7 +31,7 @@ class Weather:
 
     def weekly_forecast(self):
         """
-        Return formated forcast for each day of the week, providing min/max
+        Return formated forecast for each day of the week, providing min/max
         temp and weather conditions 
         """
         self.weekly_data = self.data["daily"]
@@ -48,7 +49,7 @@ class Weather:
             weather_conditions = week_dict[day]["weather"][0]["description"]
             daily_forecast_text = f"Day: {day}\n\tMIN: {min_temp}, MAX: {max_temp},\n\tforecast: {weather_conditions}\n"
             self.week_forecast += daily_forecast_text
-        return self.week_forcast
+        return self.week_forecast
 
     def hourly_forecast(self):
         """Get the weather conditions for the next day from 5am-8pm """
@@ -66,7 +67,7 @@ class Weather:
         return self.forecast_text
 
 
-# get forcast for week and hours
+# get forecast for week and hours
 weather = Weather()
 hourly_forecast = weather.hourly_forecast()
 weekly_forecast = weather.weekly_forecast()
@@ -81,7 +82,7 @@ client = Client(account_sid, auth_token)
 # text hourly forecast via Twilio at 5am
 if time_now == "5:00":
     message = client.messages.create(
-                        body=f"Here is your hourly weather forcast for the day:\n{hourly_forecast}.",
+                        body=f"Here is your hourly weather forecast for the day:\n{hourly_forecast}.",
                         from_='+17738302382',
                         to=my_phone_number
                     )
