@@ -6,7 +6,7 @@ from twilio.rest import Client
 
 api_key = os.environ.get("API_KEY")
 account_sid = os.environ.get("ACCT_SID")
-auth_token = os.environ.get("ACCT_SID")
+auth_token = os.environ.get("AUTH_TOKEN")
 my_phone_number = "YOUR_PHONE_NUMBER"
 
 class Weather:
