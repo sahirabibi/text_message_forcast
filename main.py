@@ -81,7 +81,7 @@ message = client.messages.create(
                      to=my_phone_number
                  )
 
-# text hourly forcast via Twilio
+# text weekly forcast via Twilio
 
 message = client.messages.create(
                      body=f"Here is your weekly weather forcast:\n{weekly_forcast}.",
